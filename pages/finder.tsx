@@ -8,28 +8,47 @@ export default function Finder() {
   console.log(brands);
   console.log(f);
 
-  const [activeSaddle, setActiveSaddle] = useState<typeof f[0] | null>(null);
+  const [activeSaddle, setActiveSaddle] = useState(f[0]);
   console.log(activeSaddle);
 
   const active = f ? "active" : "";
 
-  const FF = (saddle: typeof f[0]) => {
-    const ff = [];
-    for (let i = 0; i < Object.keys(f).length; i++) {
-      const t = Object.values(saddle)[i];
+  const saddleKeys = activeSaddle && Object.keys(activeSaddle);
+
+  const saddleValues = activeSaddle && Object.values(activeSaddle);
+
+  const process = (act: typeof activeSaddle) => {
+    const arr = [];
+    for (let i = 0; i < Object.keys(act).length; i++) {
+      const t = Object.values(act)[i];
       if (t.length > 3 && t.startsWith("YES")) {
-        ff.push(t);
+        console.log(t);
+        arr.push(<div>well</div>);
       } else if (t.length === 3 && t.startsWith("YES")) {
-        ff.push(t);
+        console.log(`${t + "ff"}`);
+        return <div>hi</div>;
       }
     }
-    return (
-      <div>
-        <h3>{saddle.Brand}</h3>
-        <h3>{saddle.Model}</h3>
-      </div>
-    );
   };
+
+  //   const FF = (saddle: typeof f[0]) => {
+  //     const ff = [];
+  //     for (let i = 0; i < Object.keys(f).length; i++) {
+  //       const t = Object.values(saddle)[i];
+  //       if (t.length > 3 && t.startsWith("YES")) {
+  //         ff.push(t);
+
+  //       } else if (t.length === 3 && t.startsWith("YES")) {
+  //         ff.push(t);
+  //       }
+  //     }
+  //     return (
+  //       <div>
+  //         <h3>{saddle.Brand}</h3>
+  //         <h3>{saddle.Model}</h3>
+  //       </div>
+  //     );
+  //   };
 
   const aa = activeSaddle ? "active" : "";
 
@@ -66,6 +85,8 @@ export default function Finder() {
         <div>
           {activeSaddle !== null && <div>ttttt{activeSaddle.Brand}</div>}
         </div>
+        <div>{JSON.stringify(activeSaddle)}</div>
+        <div>{process(activeSaddle)}</div>
       </div>
     </div>
   );
