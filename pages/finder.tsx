@@ -134,6 +134,14 @@ export default function Finder() {
         </div>
         <div>{JSON.stringify(activeSaddle)}</div>
 
+        <div>
+          {Array.from(Object.keys(activeSaddle)).map((m) => {
+            return <div>{m}</div>;
+          })}
+        </div>
+
+        <AccessoryCard accessory="saddle" />
+        <AccessoryCard accessory="saddle" />
         <AccessoryCard accessory="saddle" />
         {/* <div>{process(activeSaddle)}</div> */}
       </div>
