@@ -42,59 +42,6 @@ export default function Finder() {
   const [activeSaddle, setActiveSaddle] = useState(f[0]);
   console.log(activeSaddle);
 
-  const active = f ? "active" : "";
-
-  const saddleKeys = activeSaddle && Object.keys(activeSaddle);
-
-  const saddleValues = activeSaddle && Object.values(activeSaddle);
-
-  const process = (act: typeof activeSaddle) => {
-    const arr = [];
-
-    // const fe = Object.keys(act).forEach((k: string) => {
-    //   const t = act[k];
-    //   if (t?.length > 3 && t.startsWith("YES")) {
-    //     console.log(t);
-    //     arr.push(<div>well</div>);
-    //   } else if (t?.length === 3 && t.startsWith("YES")) {
-    //     console.log(`${t + "ff"}`);
-    //     return <div>hi</div>;
-    //   }
-    // });
-
-    // for (let i = 0; i < Object.keys(act).length; i++) {
-    //   const t = Object.values(act)[i];
-    //   if (t.length > 3 && t.startsWith("YES")) {
-    //     console.log(t);
-    //     arr.push(<div>well</div>);
-    //   } else if (t.length === 3 && t.startsWith("YES")) {
-    //     console.log(`${t + "ff"}`);
-    //     return <div>hi</div>;
-    //   }
-    // }
-  };
-
-  //   const FF = (saddle: typeof f[0]) => {
-  //     const ff = [];
-  //     for (let i = 0; i < Object.keys(f).length; i++) {
-  //       const t = Object.values(saddle)[i];
-  //       if (t.length > 3 && t.startsWith("YES")) {
-  //         ff.push(t);
-
-  //       } else if (t.length === 3 && t.startsWith("YES")) {
-  //         ff.push(t);
-  //       }
-  //     }
-  //     return (
-  //       <div>
-  //         <h3>{saddle.Brand}</h3>
-  //         <h3>{saddle.Model}</h3>
-  //       </div>
-  //     );
-  //   };
-
-  const aa = activeSaddle ? "active" : "";
-
   return (
     <div className="container flex-col mx-auto text-center">
       <h1 className="text-4xl font-bold uppercase my-8">
@@ -114,8 +61,8 @@ export default function Finder() {
       </select>
       <div className="flex">
         {/* saddle selector */}
-        <div className="flex w-1/2 flex-wrap gap-8 justify-center">
-          <ul className="max-h-full grow overflow-scroll">
+        <div className="flex flex-col max-w-1/2 flex-wrap gap-8 ">
+          <ul className="max-h-screen grow overflow-scroll">
             {f.map((f) => {
               if ((activeBrand && f.Brand === activeBrand) || !activeBrand) {
                 return (
@@ -149,14 +96,14 @@ export default function Finder() {
                   const n = g[Number.parseInt(mat.slice(mat.length - 1))];
                   return (
                     <div className="p-4 border-2 rounded-lg mx-2 my-4">
-                      <p>YES</p>
+                      {/* <p>YES</p> */}
                       <small>{n.note}</small>
                     </div>
                   );
                 } else {
                   return (
                     <div className="p-4 border-2 rounded-lg mx-2 my-4">
-                      <p>{temp}</p>
+                      {/* <p>{temp}</p> */}
                     </div>
                   );
                 }
@@ -171,13 +118,15 @@ export default function Finder() {
                   <div className="flex grow max-w-xs">
                     <div className="p-4 border-2 rounded-lg mx-2 my-4 max-w-sm grow terflex flex-col">
                       <h3 className="text-xl font-bold uppercase">{m}</h3>
-                      <Image
-                        src={"/imgs/xlab-photoroom/delta300.png"}
-                        alt="delta300"
-                        width={400}
-                        height={400}
-                        className="mx-auto"
-                      />
+                      <div className="flex flex-col items-center my-auto">
+                        <Image
+                          src={"/imgs/xlab-photoroom/delta300.png"}
+                          alt="delta300"
+                          width={800}
+                          height={800}
+                          className="mx-auto"
+                        />
+                      </div>
                       {DisplayWithNotes(temp)}
                     </div>
                   </div>
@@ -185,9 +134,7 @@ export default function Finder() {
               }
             })}
           </div>
-          <AccessoryCard accessory="saddle" />
-          <AccessoryCard accessory="saddle" />
-          <AccessoryCard accessory="saddle" />
+
           {/* <div>{process(activeSaddle)}</div> */}
         </div>
       </div>
