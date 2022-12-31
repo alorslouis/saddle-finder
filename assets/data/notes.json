@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "note": "Carbon rail version requires additional Carbon Rail Adapter Kit"
+  },
+  {
+    "id": 2,
+    "note": "Not compatible with carbon rail version"
+  },
+  {
+    "id": 3,
+    "note": "Requires extra .375\" spacer on top cage screw"
+  },
+  {
+    "id": 4,
+    "note": "Requires 2-Hole Seat Post (Cervelo, QR, etc)"
+  },
+  {
+    "id": 5,
+    "note": "Requires Seatpost with 10mm Hole (Cervelo, Argon 18, Scott, etc)"
+  },
+  {
+    "id": 6,
+    "note": "Must mount on horizontal portion of rail"
+  },
+  {
+    "id": 7,
+    "note": "Due to the various models within this series, XLAB will need to see your personal saddle model in order to help with saddle compatibility."
+  }
+]
