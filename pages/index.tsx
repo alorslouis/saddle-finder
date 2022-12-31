@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,6 +40,12 @@ export default function Home() {
             </a>
           </div>
         </div>
+
+        <Link href={"/finder"}>
+          <button className="bg-red-500 text-white p-4 rounded-lg">
+            finder
+          </button>
+        </Link>
 
         <div className={styles.center}>
           <Image
