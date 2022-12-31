@@ -1,8 +1,10 @@
 import { useState } from "react";
 import saddles from "../assets/data/saddles.json";
+import notes from "../assets/data/notes.json";
 
 export default function Finder() {
   const f = saddles;
+  const g = notes;
 
   // const rr = f.map(f => {
   //     if (f.Brand === activeSaddle.Brand && f.Model === activeSaddle.Model) {
@@ -134,13 +136,31 @@ export default function Finder() {
           <div>
             {activeSaddle !== null && <div>ttttt{activeSaddle.Brand}</div>}
           </div>
-          <div>{JSON.stringify(activeSaddle)}</div>
 
           <div className="flex flex-wrap justify-center mx-auto">
             {Array.from(Object.keys(activeSaddle)).map((m, index) => {
               // get value for key
               const temp = Object.values(activeSaddle)[index];
               const formatted = temp.slice(temp.length - 1);
+
+              const DisplayWithNotes = (mat: string) => {
+                if (mat.length > 3) {
+                  const n = g[Number.parseInt(mat.slice(mat.length - 1))];
+                  return (
+                    <div className="p-4 border-2 rounded-lg mx-2 my-4">
+                      <p>{formatted}</p>
+                      <p>{temp.slice(0, temp.length - 1)}</p>
+                      <small>{n.note}</small>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div className="p-4 border-2 rounded-lg mx-2 my-4">
+                      <p>{formatted}</p>
+                    </div>
+                  );
+                }
+              };
 
               if (
                 !m.startsWith("Brand") &&
@@ -151,6 +171,7 @@ export default function Finder() {
                   <div className="p-4 border-2 rounded-lg mx-2 my-4">
                     <h3>{m}</h3>
                     <p>{formatted}</p>
+                    {DisplayWithNotes(temp)}
                   </div>
                 );
               }
