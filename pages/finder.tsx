@@ -137,7 +137,7 @@ export default function Finder() {
             {activeSaddle !== null && <div>ttttt{activeSaddle.Brand}</div>}
           </div>
 
-          <div className="flex flex-wrap justify-center mx-auto">
+          <div className="grid grid-cols-4 grid-flow-row flex-wrap justify-center mx-auto">
             {Array.from(Object.keys(activeSaddle)).map((m, index) => {
               // get value for key
               const temp = Object.values(activeSaddle)[index];
@@ -148,15 +148,14 @@ export default function Finder() {
                   const n = g[Number.parseInt(mat.slice(mat.length - 1))];
                   return (
                     <div className="p-4 border-2 rounded-lg mx-2 my-4">
-                      <p>{formatted}</p>
-                      <p>{temp.slice(0, temp.length - 1)}</p>
+                      <p>YES</p>
                       <small>{n.note}</small>
                     </div>
                   );
                 } else {
                   return (
                     <div className="p-4 border-2 rounded-lg mx-2 my-4">
-                      <p>{formatted}</p>
+                      <p>{temp}</p>
                     </div>
                   );
                 }
@@ -168,10 +167,11 @@ export default function Finder() {
                 !temp.startsWith("NO")
               ) {
                 return (
-                  <div className="p-4 border-2 rounded-lg mx-2 my-4">
-                    <h3>{m}</h3>
-                    <p>{formatted}</p>
-                    {DisplayWithNotes(temp)}
+                  <div className="flex grow max-w-xs">
+                    <div className="p-4 border-2 rounded-lg mx-2 my-4 max-w-sm grow flex flex-col">
+                      <h3 className="text-xl font-bold uppercase">{m}</h3>
+                      {DisplayWithNotes(temp)}
+                    </div>
                   </div>
                 );
               }
