@@ -97,7 +97,7 @@ export default function Finder() {
       <h1 className="text-4xl font-bold uppercase my-8">
         saddle compatibility
       </h1>
-      <h2 className="text-xl">find the right fit</h2>
+      <h2 className="text-xl">find the gear to fit your build</h2>
 
       {/* brand selector -  */}
 
@@ -110,6 +110,7 @@ export default function Finder() {
         </option>
       </select>
       <div className="flex">
+        {/* saddle selector */}
         <div className="flex w-1/2 flex-wrap gap-8 justify-center">
           <ul className="max-h-full grow overflow-scroll">
             {f.map((f) => {
@@ -120,8 +121,8 @@ export default function Finder() {
                     onClick={() => setActiveSaddle(f)}
                     className="my-4 flex flex-col rounded-lg border-rounded border-2 border-white p-4 hover:border-red-800 transition-all ease-in-out"
                   >
-                    <h3 className="font-bold text-lg">{f.Brand}</h3>
-                    <h3>{f.Model}</h3>
+                    <h3>{f.Brand}</h3>
+                    <h3 className="font-bold text-lg">{f.Model}</h3>
                   </li>
                 );
               }
@@ -129,21 +130,37 @@ export default function Finder() {
           </ul>
         </div>
 
-        <div>
-          {activeSaddle !== null && <div>ttttt{activeSaddle.Brand}</div>}
-        </div>
-        <div>{JSON.stringify(activeSaddle)}</div>
+        <div className="flex flex-col">
+          <div>
+            {activeSaddle !== null && <div>ttttt{activeSaddle.Brand}</div>}
+          </div>
+          <div>{JSON.stringify(activeSaddle)}</div>
 
-        <div>
-          {Array.from(Object.keys(activeSaddle)).map((m) => {
-            return <div>{m}</div>;
-          })}
-        </div>
+          <div className="flex flex-wrap justify-center mx-auto">
+            {Array.from(Object.keys(activeSaddle)).map((m, index) => {
+              // get value for key
+              const temp = Object.values(activeSaddle)[index];
+              const formatted = temp.slice(temp.length - 1);
 
-        <AccessoryCard accessory="saddle" />
-        <AccessoryCard accessory="saddle" />
-        <AccessoryCard accessory="saddle" />
-        {/* <div>{process(activeSaddle)}</div> */}
+              if (
+                !m.startsWith("Brand") &&
+                !m.startsWith("Model") &&
+                !temp.startsWith("NO")
+              ) {
+                return (
+                  <div className="p-4 border-2 rounded-lg mx-2 my-4">
+                    <h3>{m}</h3>
+                    <p>{formatted}</p>
+                  </div>
+                );
+              }
+            })}
+          </div>
+          <AccessoryCard accessory="saddle" />
+          <AccessoryCard accessory="saddle" />
+          <AccessoryCard accessory="saddle" />
+          {/* <div>{process(activeSaddle)}</div> */}
+        </div>
       </div>
     </div>
   );
