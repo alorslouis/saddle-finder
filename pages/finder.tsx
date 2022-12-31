@@ -1,6 +1,7 @@
 import { useState } from "react";
 import saddles from "../assets/data/saddles.json";
 import notes from "../assets/data/notes.json";
+import Image from "next/image";
 
 export default function Finder() {
   const f = saddles;
@@ -168,8 +169,15 @@ export default function Finder() {
               ) {
                 return (
                   <div className="flex grow max-w-xs">
-                    <div className="p-4 border-2 rounded-lg mx-2 my-4 max-w-sm grow flex flex-col">
+                    <div className="p-4 border-2 rounded-lg mx-2 my-4 max-w-sm grow terflex flex-col">
                       <h3 className="text-xl font-bold uppercase">{m}</h3>
+                      <Image
+                        src={"/imgs/xlab-photoroom/delta300.png"}
+                        alt="delta300"
+                        width={400}
+                        height={400}
+                        className="mx-auto"
+                      />
                       {DisplayWithNotes(temp)}
                     </div>
                   </div>
